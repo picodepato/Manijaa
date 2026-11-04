@@ -10,27 +10,30 @@ Publicada en **https://manijadj.com**.
 ## Estructura
 
 ```
-index.html   → toda la web (HTML + CSS + JS en un solo archivo, sin dependencias ni build)
-img/         → las mismas fotos de la web original (sin cambios)
-video/       → (opcional) hero.mp4 para la portada; si no existe, se muestra img/hero.jpg
-docs/        → capturas del rediseño (no hacen falta para publicar)
+index.html     → toda la web (HTML + CSS + JS en un solo archivo, sin dependencias ni build)
+img/           → las mismas fotos de la web original (sin cambios)
+img/webp/      → versiones ligeras de esas fotos (se generan con herramientas/miniaturas.py)
+fonts/         → Montserrat y Herr Von Muellerhoff alojadas en la propia web (licencia OFL)
+herramientas/  → miniaturas.py, para regenerar img/webp/ si cambian las fotos
+video/         → (opcional) hero.mp4 para la portada, ver "Mantenimiento"
+docs/          → capturas del rediseño (no hacen falta para publicar)
 ```
 
-- Sigue siendo una web estática: no hay framework, ni npm, ni paso de compilación, ni librerías externas.
+- Sigue siendo una web estática: no hay framework, ni npm, ni paso de compilación, ni librerías externas. Tampoco depende de Google Fonts: las fuentes van en `fonts/`.
 - Para verla en local: abre `index.html` en el navegador o sirve la carpeta con `npx serve .` o `python3 -m http.server`.
-- Para cambiar la web original por esta basta con sustituir `index.html`. La carpeta `img/` es la misma.
+- Para cambiar la web original por esta hay que sustituir `index.html` y añadir las carpetas `fonts/` e `img/webp/`. Las fotos de `img/` son las mismas.
 
 ## Recorrido
 
 | Sección | Qué pasa |
 |---|---|
-| **Intro** | "MANIJA" aparece letra a letra con una línea dorada y se levanta como un telón. Solo en la primera carga; si se entra con un enlace tipo `#booking`, no aparece. |
+| **Intro** | "MANIJA" aparece letra a letra con una línea dorada y se levanta como un telón. Sale una vez por sesión del navegador, y nunca si se entra con un enlace tipo `#booking`. |
 | **Portada** | Misma composición: nombre sobre la cabeza y lema debajo. La foto se aleja suavemente, el lema se "escribe a mano" y unas ondas de sonido doradas fluyen por la imagen y reaccionan al ratón. Con el ratón cerca, las letras de MANIJA ganan grosor. |
-| **El sonido** | La frase de la bio sobre cómo es un set se ilumina palabra a palabra con el scroll y gana grosor: empieza fina y termina en dorado ("…en lo más alto"). Debajo, una forma de onda como la de un software de DJ avanza con el scroll y muestra el tiempo del set. |
+| **El sonido** | La frase de la bio sobre cómo es un set se ilumina palabra a palabra con el scroll. La propia frase crece como un set: empieza fina y termina gruesa y en dorado ("…en lo más alto"). Debajo, una forma de onda como la de un software de DJ avanza con el scroll y muestra el tiempo del set. |
 | **Marquee** | "MANIJA ✦ la música fluye, la pista decide..." en movimiento continuo. Acelera, se inclina y cambia de sentido según la velocidad del scroll. |
-| **01 · Sesiones** | La destacada tiene un vinilo que sale de la funda y gira como un plato real: acelera al pasar el ratón y va a 33⅓ rpm mientras suena. El resto se abre en un reproductor tipo cine. Las cifras (9 sesiones, +10 horas) se calculan solas con las duraciones. |
+| **01 · Sesiones** | La destacada tiene un vinilo que sale de la funda y gira como un plato real: acelera al pasar el ratón, va a 33⅓ rpm mientras suena y frena si se pausa el vídeo desde los controles de YouTube. El resto se abre en un reproductor tipo cine. Las cifras (9 sesiones, +10 horas) se calculan solas con las duraciones. |
 | **02 · Fechas** | La residencia de Crush tiene su propia tarjeta con un pulso "en directo". Las fechas se ordenan solas: las futuras pasan a "Próximas" y las pasadas a "Últimas fechas". |
-| **03 · Galería** | En escritorio, una tira horizontal de fotos que se desliza con el scroll vertical, con parallax dentro de cada foto. En móvil, una rejilla donde la foto que pasa por el centro recupera el color. El visor amplía la foto desde su miniatura y permite pasar de foto con flechas, teclado o deslizando el dedo. |
+| **03 · Galería** | En escritorio, una tira horizontal de fotos que se desliza con el scroll vertical, con parallax dentro de cada foto. En móvil, una tira que se desliza con el dedo, con contador y barra de progreso; la foto del centro recupera el color. El visor amplía la foto desde su miniatura y permite pasar de foto con flechas, teclado o deslizando el dedo. |
 | **04 · Bio** | El retrato se descubre como un telón y tiene parallax. El título entra letra a letra. |
 | **05 · Booking** | "BOOKING" gigante en contorno desplazándose, "hagamos que suene..." escrito a mano, el email con botón de copiar, WhatsApp y redes con efecto magnético. |
 
@@ -45,7 +48,7 @@ En todo el sitio hay además grano de película, cursor propio con ratón ("Play
 
 ![Booking](docs/capturas/06-booking.jpg)
 
-![Móvil: portada, menú, sesión destacada y visor](docs/capturas/07-movil.jpg)
+![Móvil: portada, galería deslizable, sesión destacada y menú](docs/capturas/07-movil.jpg)
 
 > En estas capturas las miniaturas de YouTube de las sesiones están sustituidas por fotos de la galería, porque se hicieron sin acceso a YouTube. En la web publicada se ve la miniatura real de cada vídeo.
 
@@ -53,8 +56,8 @@ En todo el sitio hay además grano de película, cursor propio con ratón ("Play
 
 - **Añadir una fecha**: en `index.html`, dentro de `<ul id="gigs">`, copia un `<li class="gig">` y cambia `data-date` y `datetime` (formato `AAAA-MM-DD`), la fecha visible, el nombre y el lugar. Da igual dónde la pongas: si es futura aparece sola en "Próximas" y, cuando pase, baja a "Últimas fechas".
 - **Añadir una sesión**: copia un `<button class="s-card">` y cambia `data-id` (el código del vídeo de YouTube), `data-title`, `data-dur`, la miniatura y los textos. Las cifras de sesiones y horas se recalculan solas.
-- **Cambiar fotos**: sustituye los archivos de `img/` manteniendo el nombre. En la galería, cada foto tiene `--ar` (proporción ancho/alto) en su `style`: si cambias una vertical por una horizontal, actualízalo (por ejemplo `--ar:3/2`).
-- **Vídeo de portada**: si se sube `video/hero.mp4`, se reproduce en bucle sobre la foto. Si no existe, se queda la foto.
+- **Cambiar fotos**: sustituye los archivos de `img/` manteniendo el nombre y regenera las versiones ligeras con `python3 herramientas/miniaturas.py` (necesita `pip install pillow`). Si no puedes, borra el `.webp` correspondiente de `img/webp/`: la web usará el JPG original. En la galería, cada foto tiene `--ar` (proporción ancho/alto) en su `style`: si cambias una vertical por una horizontal, actualízalo (por ejemplo `--ar:3/2`), y también el ancho del JPG en su `srcset`.
+- **Vídeo de portada**: sube `video/hero.mp4` y cambia `data-video=""` por `data-video="video/hero.mp4"` en `<section class="hero">`. Se reproduce en bucle sobre la foto. Mientras no se active, la web no lo pide.
 - **Foto de portada vertical para móvil** (pendiente del README original): cuando exista, se puede añadir con un `<picture>` y un `<source media="(max-width: 760px)">` alrededor de `img.hero-img`.
 
 ## Reglas de marca (se mantienen)
@@ -71,6 +74,8 @@ En todo el sitio hay además grano de película, cursor propio con ratón ("Play
 - El reproductor y el visor son diálogos accesibles: el foco entra y vuelve al botón de origen, se cierran con `Esc`, el fondo queda inactivo y el visor se maneja con las flechas.
 - Textos pequeños con contraste AA, enlace para saltar al contenido, títulos de sección reales para lectores de pantalla y datos estructurados (JSON-LD) para buscadores.
 - Las animaciones van en un único bucle `requestAnimationFrame` que no mide el DOM en cada fotograma, y las ondas se pausan cuando no se ven. Los vídeos de YouTube (`youtube-nocookie`) solo se cargan al pulsar play.
+- Las fotos de la galería, la residencia y la bio se sirven en WebP con `srcset`: en el móvil la galería pesa la mitad. El visor enseña al instante esa versión y la cambia por el JPG completo cuando llega.
+- Con el **ahorro de datos** del móvil activado no se carga el grano de película ni el vídeo de portada.
 
 ## Cómo proponer cambios
 

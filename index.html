@@ -10,6 +10,9 @@
 <meta property="og:title" content="MANIJA · DJ">
 <meta property="og:description" content="La música fluye, la pista decide. DJ residente en Crush, Alicante.">
 <meta property="og:image" content="https://manijadj.com/img/hero.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1280">
+<meta property="og:image:alt" content="MANIJA al atardecer en Benidorm">
 <meta property="og:url" content="https://manijadj.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
@@ -17,17 +20,17 @@
 <link rel="canonical" href="https://manijadj.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-weight='300' font-size='38' text-anchor='middle' fill='%23ececec'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Montserrat como fuente variable (200–600) para poder animar el grosor; Herr Von Muellerhoff para el lema -->
-<link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Montserrat:wght@200..600&display=swap" rel="stylesheet">
+<!-- Fuentes alojadas en la propia web (carpeta fonts/): más rápido y sin enviar datos de visitantes a Google -->
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/herr-von-muellerhoff-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="dns-prefetch" href="https://i.ytimg.com">
 <script>
-  // Marca que hay JS (activa las animaciones). Sin intro si se entra con #enlace o con "reducir movimiento".
-  // Red de seguridad: si el script principal fallara, a los 6 s se muestra todo igualmente.
+  // Marca que hay JS (activa las animaciones). La intro solo sale una vez por sesión, y nunca si se entra
+  // con un #enlace o con "reducir movimiento". Red de seguridad: si el script principal fallara, a los 6 s se muestra todo.
   (function (d, w) {
-    var h = d.documentElement; h.classList.add('js');
-    try { if (location.hash.length > 1 || w.matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('no-intro'); } catch (e) {}
+    var h = d.documentElement, seen = false; h.classList.add('js');
+    try { seen = sessionStorage.getItem('mj-intro') === '1'; } catch (e) {}
+    try { if (seen || location.hash.length > 1 || w.matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('no-intro'); } catch (e) {}
     setTimeout(function () { if (!w.__manija) h.classList.add('loaded', 'fallback'); }, 6000);
   })(document, window);
 </script>
@@ -54,6 +57,11 @@
      MANIJA · DJ
      Paleta de marca: negro #0a0a0a · blanco roto #ececec · acento dorado #e8c48e
      ===================================================================== */
+  /* Fuentes (licencia SIL OFL, ver fonts/). Montserrat es variable: admite cualquier grosor de 100 a 900 */
+  @font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/montserrat-latin-ext-wght-normal.woff2) format("woff2-variations"), url(fonts/montserrat-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/montserrat-latin-wght-normal.woff2) format("woff2-variations"), url(fonts/montserrat-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Herr Von Muellerhoff"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/herr-von-muellerhoff-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Herr Von Muellerhoff"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/herr-von-muellerhoff-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   :root {
     --bg: #0a0a0a;
     --bg-2: #101010;
@@ -89,6 +97,7 @@
   main { overflow-x: clip; }
 
   /* ---------- Grano de película (textura generada por JS) ---------- */
+  .lite .grain { display: none; }
   .grain { position: fixed; inset: -10%; z-index: 90; pointer-events: none; opacity: .055; background-size: 180px; animation: grain 1.1s steps(6) infinite; }
   @keyframes grain {
     0% { transform: translate(0, 0); } 17% { transform: translate(-4%, 3%); } 33% { transform: translate(3%, -5%); }
@@ -204,7 +213,8 @@
   .loaded .scroll-cue { opacity: 1; }
 
   /* ---------- Elementos comunes ---------- */
-  .sec { position: relative; z-index: 1; background: var(--bg); padding: clamp(100px, 16vh, 180px) var(--pad); }
+  .sec { position: relative; z-index: 1; background: var(--bg); padding: clamp(84px, 13vh, 150px) var(--pad); }
+  #fechas { padding-bottom: clamp(48px, 8vh, 90px); }
   .wrap { max-width: var(--max); margin: 0 auto; }
   .label { display: flex; align-items: center; gap: 14px; margin: 0 0 24px; font-size: 11px; font-weight: 400; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
   .label .n { color: var(--gold); letter-spacing: .14em; }
@@ -243,17 +253,16 @@
   .zoom { display: block; width: 100%; height: 100%; }
 
   /* ---------- Manifiesto (se ilumina con el scroll) ---------- */
-  .manifesto { position: relative; z-index: 1; background: var(--bg); height: 230vh; }
+  .manifesto { position: relative; z-index: 1; background: var(--bg); height: 170vh; }
   .mf-pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; padding: var(--nav-h) var(--pad) 0; overflow: hidden; }
   .mf-in { width: 100%; max-width: var(--max); margin: 0 auto; }
   .mf-text { max-width: 1180px; font-size: clamp(28px, 4.5vw, 68px); line-height: 1.2; font-weight: 200; letter-spacing: -.005em; }
-  .mw { position: relative; display: inline-block; }
-  .mw-r { visibility: hidden; }
-  .mw-v { position: absolute; left: 0; top: 0; white-space: nowrap; }
-  /* En reposo las palabras quedan en gris con contraste 3:1 (texto grande); al iluminarse ganan brillo, grosor y, al final, dorado */
-  .js .mw-v { opacity: .38; }
+  /* Cada palabra tiene ya su grosor final (la frase va de fina a gruesa, como un set). En reposo queda en gris
+     con contraste 3:1 (texto grande) y al iluminarse gana brillo; las últimas pasan a dorado */
+  .mw { display: inline-block; }
+  .js .mw { opacity: .38; }
   .mw.g { color: var(--gold); }
-  .js .mw.g .mw-v { color: var(--text); }
+  .js .mw.g { color: var(--text); }
   .mf-deck { position: relative; margin-top: clamp(32px, 6vh, 64px); }
   .mf-wave { width: 100%; height: clamp(46px, 8vh, 84px); }
   .mf-wave .bars-dim rect { fill: rgba(236,236,236,.14); }
@@ -272,7 +281,7 @@
   .mq-star { font-size: clamp(14px, 1.5vw, 22px); color: var(--gold); transform: translateY(-.9em); }
 
   /* ---------- Sesiones ---------- */
-  .feat { position: relative; margin-bottom: clamp(72px, 12vh, 130px); }
+  .feat { position: relative; margin-bottom: clamp(56px, 9vh, 100px); }
   .feat-stage { position: relative; padding-right: 23%; }
   .vinyl { position: absolute; top: 50%; right: 0; z-index: 0; width: 42%; aspect-ratio: 1; transform: translate3d(-44%, -50%, 0); transition: transform 1.9s var(--ease); }
   .feat.in .vinyl { transform: translate3d(0, -50%, 0); }
@@ -324,7 +333,7 @@
   .sessions-foot { margin-top: clamp(56px, 9vh, 90px); }
 
   /* ---------- Fechas ---------- */
-  .residency { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border: 1px solid var(--line); background: var(--bg-2); overflow: hidden; margin-bottom: clamp(64px, 10vh, 110px); }
+  .residency { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border: 1px solid var(--line); background: var(--bg-2); overflow: hidden; margin-bottom: clamp(48px, 8vh, 88px); }
   .res-media { position: relative; min-height: 440px; overflow: hidden; }
   .res-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; filter: var(--photo); transition: filter .9s, transform 2.2s var(--ease); }
   .residency:hover .res-media img { filter: none; transform: scale(1.05); }
@@ -356,37 +365,54 @@
   .note a:hover { color: var(--gold); border-color: var(--gold); }
 
   /* ---------- Galería ---------- */
-  .gal { position: relative; z-index: 1; background: var(--bg); padding: clamp(100px, 16vh, 180px) var(--pad); }
-  .gal-track { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; gap: 10px; }
-  .gal-intro { grid-column: 1 / -1; margin-bottom: clamp(32px, 6vh, 56px); }
+  /* Base (móvil): título arriba y una tira de fotos que se desliza con el dedo */
+  .gal { position: relative; z-index: 1; background: var(--bg); padding: clamp(84px, 13vh, 150px) 0; }
+  .gal-rail { position: relative; }
+  .gal-intro { padding: 0 var(--pad); margin-bottom: clamp(28px, 5vh, 48px); }
   .gal-hint { margin-top: 22px; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
-  .g-item { position: relative; }
-  .g-btn { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-3); cursor: zoom-in; }
+  .gal-hint .d { display: none; }
+  .gal-track { position: relative; display: flex; align-items: stretch; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); padding: 0 var(--pad); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .gal-track::-webkit-scrollbar { display: none; }
+  .g-item { position: relative; flex: none; height: min(58svh, 470px); scroll-snap-align: start; }
+  .g-btn { position: relative; display: block; height: 100%; width: auto; aspect-ratio: var(--ar, 4 / 5); max-width: 86vw; overflow: hidden; background: var(--bg-3); cursor: zoom-in; }
   .g-btn img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo); transition: filter .9s; }
   .g-btn:hover img, .g-btn:focus-visible img, .g-item.lit img { filter: none; }
-  .g-item.wide { grid-column: 1 / -1; }
-  @media (min-width: 900px) { .gal-track { grid-template-columns: repeat(3, minmax(0, 1fr)); } .g-item.wide { grid-column: span 2; } .g-item.wide .g-btn { aspect-ratio: auto; height: 100%; } }
-  .g-item.wide .g-btn { aspect-ratio: 3 / 2; }
   .g-item figcaption { display: none; }
-  .gal-end { grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(40px, 8vh, 80px) 0 0; }
-  .gal-end .script { font-family: var(--script); font-size: clamp(44px, 6vw, 72px); line-height: 1; color: var(--gold); }
-  .gal-bar { display: none; }
-  /* Modo horizontal (escritorio): la galería se desliza de lado mientras se hace scroll */
+  .gal-end { flex: none; width: min(70vw, 320px); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; padding: 0 8px 0 12px; scroll-snap-align: start; }
+  .gal-end p { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+  .gal-bar { display: flex; align-items: center; gap: 18px; margin: 22px var(--pad) 0; font-size: 10px; letter-spacing: .2em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .gal-bar .bar { position: relative; flex: 1; height: 1px; background: var(--line); overflow: hidden; }
+  .gal-bar .bar i { position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+  /* Escritorio sin animación (sin JS o con "reducir movimiento"): rejilla de 3 columnas */
+  @media (min-width: 900px) {
+    .gal { padding-left: var(--pad); padding-right: var(--pad); }
+    .gal-intro { padding: 0; }
+    .gal-hint .m { display: none; }
+    .gal-hint .d { display: inline; }
+    .gal-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: dense; gap: 10px; overflow: visible; padding: 0; scroll-snap-type: none; }
+    .g-item { height: auto; }
+    .g-btn { width: 100%; height: auto; aspect-ratio: 4 / 5; max-width: none; }
+    .g-item.wide { grid-column: span 2; }
+    .g-item.wide .g-btn { height: 100%; aspect-ratio: auto; }
+    .gal-end { grid-column: 1 / -1; width: auto; padding: clamp(36px, 6vh, 60px) 0 0; }
+    .gal-bar { display: none; }
+  }
+  /* Modo horizontal (escritorio con animación): la tira se desliza de lado mientras se hace scroll */
   .gal.h { padding: 0; }
-  .gal.h .gal-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: var(--nav-h); }
-  .gal.h .gal-track { display: flex; align-items: center; gap: clamp(22px, 2.6vw, 44px); width: max-content; padding: 0 var(--pad); will-change: transform; }
+  /* Fotos "colgadas" desde arriba: el título aparece en cuanto entra la sección, sin un tramo negro previo */
+  .gal.h .gal-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: flex-start; padding-top: calc(var(--nav-h) + 6vh); }
+  .gal.h .gal-rail { display: flex; align-items: flex-start; width: max-content; padding: 0 var(--pad); will-change: transform; }
   .gal.h .gal-intro { flex: none; width: max-content; max-width: 60vw; margin: 0 4vw 0 0; }
   .gal.h .gal-intro .title { font-size: clamp(56px, 7vw, 112px); }
-  .gal.h .g-item { flex: none; height: calc(var(--h, .62) * 100vh); transform: translateY(var(--y, 0)); }
+  .gal.h .gal-track { display: flex; align-items: flex-start; gap: clamp(22px, 2.6vw, 44px); width: max-content; overflow: visible; }
+  .gal.h .g-item { height: calc(var(--h, .62) * 100vh); transform: translateY(var(--y, 0)); }
   .gal.h .g-btn { width: auto; height: 100%; aspect-ratio: var(--ar, 2 / 3); }
   .gal.h .g-item.wide .g-btn { aspect-ratio: var(--ar, 3 / 2); }
   .gal.h .g-btn .zoom { width: 116%; margin-left: -8%; }
   .gal.h .g-btn img { will-change: transform; }
   .gal.h .g-item figcaption { display: block; position: absolute; left: 0; top: calc(100% + 12px); font-size: 10px; letter-spacing: .2em; color: var(--dim); font-variant-numeric: tabular-nums; }
-  .gal.h .gal-end { flex: none; width: min(30vw, 420px); padding: 0 0 0 2vw; }
-  .gal.h .gal-bar { display: flex; align-items: center; gap: 18px; position: absolute; left: var(--pad); right: var(--pad); bottom: clamp(22px, 4.5vh, 44px); font-size: 10px; letter-spacing: .2em; color: var(--dim); font-variant-numeric: tabular-nums; }
-  .gal-bar .bar { position: relative; flex: 1; height: 1px; background: var(--line); overflow: hidden; }
-  .gal-bar .bar i { position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+  .gal.h .gal-end { width: min(26vw, 360px); padding: 18vh 0 0 2vw; }
+  .gal.h .gal-bar { display: flex; position: absolute; left: var(--pad); right: var(--pad); bottom: clamp(22px, 4.5vh, 44px); margin: 0; }
 
   /* Visor de fotos */
   .lb, .vm { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; }
@@ -394,8 +420,12 @@
   .lb-bg, .vm-bg { position: absolute; inset: 0; background: rgba(6,6,6,.96); opacity: 0; transition: opacity .5s; }
   .vm-bg { background: rgba(6,6,6,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
   .lb.open .lb-bg, .vm.open .vm-bg { opacity: 1; }
-  .lb-fig { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: calc(100vw - 2 * var(--pad) - 140px); touch-action: pan-y pinch-zoom; cursor: zoom-out; }
-  .lb-img { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 180px); max-height: calc(100svh - 180px); object-fit: contain; user-select: none; -webkit-user-drag: none; transform-origin: 50% 50%; }
+  .lb, .vm { touch-action: none; overscroll-behavior: contain; }
+  .mnav { overscroll-behavior: contain; }
+  .lb-fig { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: calc(100vw - 2 * var(--pad) - 140px); touch-action: pinch-zoom; cursor: zoom-out; }
+  /* El tamaño sale de la proporción de la foto (no de su resolución): así se enseña al instante la versión ligera
+     y se cambia por la completa sin saltos */
+  .lb-img { display: block; max-width: none; height: auto; aspect-ratio: var(--lb-ar, .667); width: min(calc(100vw - 2 * var(--pad) - 140px), calc((100vh - 180px) * var(--lb-ar, .667))); width: min(calc(100vw - 2 * var(--pad) - 140px), calc((100svh - 180px) * var(--lb-ar, .667))); object-fit: cover; background: var(--bg-3); user-select: none; -webkit-user-drag: none; transform-origin: 50% 50%; }
   .lb-cap { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); text-align: center; }
   .lb-ui { opacity: 0; transition: opacity .45s .15s; }
   .lb.open .lb-ui, .vm.open .lb-ui { opacity: 1; }
@@ -487,6 +517,7 @@
     .res-media { min-height: 0; aspect-ratio: 4 / 3; }
   }
   @media (max-width: 760px) {
+    .manifesto { height: 160vh; }
     .hero { padding-left: 12px; padding-right: 12px; }
     .motto-hero { font-size: clamp(30px, 10vw, 40px); white-space: nowrap; padding-left: .15em; padding-right: .15em; }
     .feat-stage { padding: 24% 0 0; }
@@ -508,7 +539,7 @@
     .facts > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 18px; }
     .sec-aside { gap: 22px; }
     .lb-fig { max-width: calc(100vw - 32px); }
-    .lb-img { max-height: calc(100svh - 220px); }
+    .lb-img { width: min(calc(100vw - 32px), calc((100svh - 230px) * var(--lb-ar, .667))); }
     .lb-btn { top: auto; bottom: calc(22px + env(safe-area-inset-bottom)); margin: 0; width: 52px; height: 52px; }
     .lb-prev { left: calc(50% - 64px); }
     .lb-next { right: calc(50% - 64px); }
@@ -526,7 +557,8 @@
   }
   .fallback [data-reveal], .fallback [data-split] .c, .fallback .logo .c, .fallback .menu li, .fallback .hero-sub, .fallback .motto-hero, .fallback .scroll-cue { opacity: 1 !important; transform: none !important; clip-path: none !important; }
   .fallback [data-write] { -webkit-mask-image: none !important; mask-image: none !important; }
-  .fallback .mw-v { opacity: 1 !important; }
+  .fallback .mw { opacity: 1 !important; }
+  .fallback .mw.g { color: var(--gold) !important; }
 </style>
 </head>
 <body>
@@ -582,12 +614,11 @@
 
 <main>
   <!-- ================= PORTADA ================= -->
-  <section class="hero" id="inicio" aria-label="Portada">
+  <!-- Vídeo de portada opcional: sube video/hero.mp4 y cambia data-video="" por data-video="video/hero.mp4" -->
+  <section class="hero" id="inicio" aria-label="Portada" data-video="">
     <div class="hero-media">
       <div class="hero-par">
         <img class="hero-img" src="img/hero.jpg" alt="MANIJA al atardecer en Benidorm" fetchpriority="high">
-        <!-- Si existe video/hero.mp4 se reproduce en bucle encima de la foto; si no, se queda la foto -->
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="img/hero.jpg" aria-hidden="true"><source src="video/hero.mp4" type="video/mp4"></video>
       </div>
     </div>
     <div class="hero-shade"></div>
@@ -733,7 +764,7 @@
       </div>
 
       <article class="residency" data-reveal>
-        <div class="res-media"><img src="img/crush-cabina.jpg" alt="MANIJA en la cabina de Crush" loading="lazy" decoding="async"></div>
+        <div class="res-media"><img src="img/crush-cabina.jpg" srcset="img/webp/crush-cabina.webp 1000w, img/crush-cabina.jpg 1050w" sizes="(min-width: 900px) 44vw, 100vw" alt="MANIJA en la cabina de Crush" loading="lazy" decoding="async"></div>
         <div class="res-body">
           <p class="res-tag"><span class="pulse" aria-hidden="true"></span>Residente</p>
           <h3>Cadenza</h3>
@@ -764,37 +795,39 @@
   <!-- ================= GALERÍA ================= -->
   <section class="gal" id="galeria" aria-labelledby="t-galeria">
     <div class="gal-pin">
-      <div class="gal-track">
+      <div class="gal-rail">
         <div class="gal-intro">
           <p class="label"><span class="n">03</span><span class="ln"></span>Galería</p>
           <h2 class="title" id="t-galeria" data-split>Momentos</h2>
-          <p class="gal-hint" data-reveal>12 fotos · pulsa para ampliar</p>
+          <p class="gal-hint" data-reveal><span id="gal-total">12</span> fotos · <span class="m">desliza para ver más</span><span class="d">pulsa para ampliar</span></p>
         </div>
-        <figure class="g-item" style="--h:.66;--y:-4%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-pista.jpg" alt="MANIJA en cabina con la pista bailando" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">01</figcaption></figure>
-        <figure class="g-item" style="--h:.54;--y:6%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-sonrisa.jpg" alt="MANIJA en cabina bajo las buganvillas de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">02</figcaption></figure>
-        <figure class="g-item" style="--h:.7;--y:-2%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-contraluz.jpg" alt="MANIJA pinchando a contraluz al atardecer" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">03</figcaption></figure>
-        <figure class="g-item wide" style="--h:.5;--y:-6%;--ar:1400/933"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-publico.jpg" alt="Vista desde la cabina hacia el público" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">04</figcaption></figure>
-        <figure class="g-item" style="--h:.6;--y:5%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-bn.jpg" alt="MANIJA junto al mar" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">05</figcaption></figure>
-        <figure class="g-item" style="--h:.68;--y:-3%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-cabina.jpg" alt="MANIJA en la cabina de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">06</figcaption></figure>
-        <figure class="g-item" style="--h:.56;--y:6%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-manos.jpg" alt="Manos en el mixer" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">07</figcaption></figure>
-        <figure class="g-item" style="--h:.7;--y:0%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-rosa.jpg" alt="MANIJA con el cielo del atardecer de fondo" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">08</figcaption></figure>
-        <figure class="g-item" style="--h:.58;--y:-5%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-energia.jpg" alt="MANIJA sonriendo en cabina" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">09</figcaption></figure>
-        <figure class="g-item" style="--h:.64;--y:4%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-sala.jpg" alt="Vista desde la cabina hacia la terraza de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">10</figcaption></figure>
-        <figure class="g-item" style="--h:.6;--y:-2%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-montana.jpg" alt="MANIJA con auriculares frente a la montaña" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">11</figcaption></figure>
-        <figure class="g-item" style="--h:.68;--y:3%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-cabina.jpg" alt="MANIJA en cabina con gente alrededor" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">12</figcaption></figure>
-        <div class="gal-end" data-reveal>
-          <p class="script">y muchos más...</p>
-          <a class="more" href="https://www.instagram.com/manija_dj" target="_blank" rel="noopener" data-magnetic=".25">Instagram · @manija_dj <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        <div class="gal-track">
+          <figure class="g-item" style="--h:.66;--y:-4%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-pista.jpg" srcset="img/webp/live-pista.webp 933w, img/live-pista.jpg 933w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA en cabina con la pista bailando" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">01</figcaption></figure>
+          <figure class="g-item" style="--h:.54;--y:6%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-sonrisa.jpg" srcset="img/webp/crush-sonrisa.webp 1000w, img/crush-sonrisa.jpg 1050w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA en cabina bajo las buganvillas de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">02</figcaption></figure>
+          <figure class="g-item" style="--h:.7;--y:-2%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-contraluz.jpg" srcset="img/webp/sunset-contraluz.webp 1000w, img/sunset-contraluz.jpg 1280w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA pinchando a contraluz al atardecer" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">03</figcaption></figure>
+          <figure class="g-item wide" style="--h:.5;--y:-6%;--ar:1400/933"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-publico.jpg" srcset="img/webp/live-publico.webp 1000w, img/live-publico.jpg 1400w" sizes="(min-width: 900px) 78vh, 86vw" alt="Vista desde la cabina hacia el público" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">04</figcaption></figure>
+          <figure class="g-item" style="--h:.6;--y:5%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-bn.jpg" srcset="img/webp/sunset-bn.webp 1000w, img/sunset-bn.jpg 1280w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA junto al mar" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">05</figcaption></figure>
+          <figure class="g-item" style="--h:.68;--y:-3%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-cabina.jpg" srcset="img/webp/crush-cabina.webp 1000w, img/crush-cabina.jpg 1050w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA en la cabina de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">06</figcaption></figure>
+          <figure class="g-item" style="--h:.56;--y:6%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-manos.jpg" srcset="img/webp/live-manos.webp 933w, img/live-manos.jpg 933w" sizes="(min-width: 900px) 52vh, 76vw" alt="Manos en el mixer" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">07</figcaption></figure>
+          <figure class="g-item" style="--h:.7;--y:0%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-rosa.jpg" srcset="img/webp/sunset-rosa.webp 1000w, img/sunset-rosa.jpg 1280w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA con el cielo del atardecer de fondo" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">08</figcaption></figure>
+          <figure class="g-item" style="--h:.58;--y:-5%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-energia.jpg" srcset="img/webp/live-energia.webp 933w, img/live-energia.jpg 933w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA sonriendo en cabina" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">09</figcaption></figure>
+          <figure class="g-item" style="--h:.64;--y:4%;--ar:1050/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/crush-sala.jpg" srcset="img/webp/crush-sala.webp 1000w, img/crush-sala.jpg 1050w" sizes="(min-width: 900px) 52vh, 76vw" alt="Vista desde la cabina hacia la terraza de Crush" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">10</figcaption></figure>
+          <figure class="g-item" style="--h:.6;--y:-2%;--ar:1280/1920"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/sunset-montana.jpg" srcset="img/webp/sunset-montana.webp 1000w, img/sunset-montana.jpg 1280w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA con auriculares frente a la montaña" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">11</figcaption></figure>
+          <figure class="g-item" style="--h:.68;--y:3%;--ar:933/1400"><button class="g-btn" type="button" data-reveal="clip" data-cursor="Ver"><span class="zoom"><img src="img/live-cabina.jpg" srcset="img/webp/live-cabina.webp 933w, img/live-cabina.jpg 933w" sizes="(min-width: 900px) 52vh, 76vw" alt="MANIJA en cabina con gente alrededor" loading="lazy" decoding="async"></span></button><figcaption aria-hidden="true">12</figcaption></figure>
+          <div class="gal-end" data-reveal>
+            <p>Más momentos</p>
+            <a class="more" href="https://www.instagram.com/manija_dj" target="_blank" rel="noopener" data-magnetic=".25">Instagram · @manija_dj <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+          </div>
         </div>
       </div>
-      <div class="gal-bar" aria-hidden="true"><span id="gal-n">01</span><span class="bar"><i></i></span><span>12</span></div>
+      <div class="gal-bar" aria-hidden="true"><span id="gal-n">01</span><span class="bar"><i></i></span><span id="gal-total-2">12</span></div>
     </div>
   </section>
 
   <!-- ================= BIO ================= -->
   <section class="sec" id="bio" aria-labelledby="t-bio">
     <div class="wrap bio-grid">
-      <div class="bio-media" data-reveal="clip"><span class="zoom"><img src="img/bio.jpg" alt="Retrato de Gabriel Giraldi junto al mar" loading="lazy" decoding="async" data-parallax="0.09"></span></div>
+      <div class="bio-media" data-reveal="clip"><span class="zoom"><img src="img/bio.jpg" srcset="img/webp/bio.webp 1000w, img/bio.jpg 1280w" sizes="(min-width: 900px) 42vw, 100vw" alt="Retrato de Gabriel Giraldi junto al mar" loading="lazy" decoding="async" data-parallax="0.09"></span></div>
       <div class="bio-text">
         <p class="label"><span class="n">04</span><span class="ln"></span>Bio</p>
         <h2 class="title" id="t-bio" data-split>Una experiencia, no un género</h2>
@@ -884,6 +917,11 @@
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const wideMQ = matchMedia('(min-width: 900px)');
   const skipIntro = root.classList.contains('no-intro');
+  // "Ahorro de datos" activado en el móvil: sin grano ni vídeo de portada
+  const lite = !!(navigator.connection && navigator.connection.saveData);
+  if (lite) root.classList.add('lite');
+  // La intro solo se ve una vez por sesión del navegador
+  if (!skipIntro) { try { sessionStorage.setItem('mj-intro', '1'); } catch (e) {} }
   // Posición en el documento sin contar transformaciones (para no medir en cada frame)
   const docTop = el => { let y = 0; for (let n = el; n; n = n.offsetParent) y += n.offsetTop; return y; };
 
@@ -992,7 +1030,7 @@
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------------------------------------------------------------
-     Manifiesto: palabras que se iluminan y ganan grosor (de suave a lo más alto)
+     Manifiesto: palabras que se iluminan con el scroll; la frase va de fina a gruesa (de suave a lo más alto)
      --------------------------------------------------------------- */
   const mf = $('.manifesto');
   const mfWords = [];
@@ -1003,12 +1041,10 @@
     const frag = document.createDocumentFragment();
     words.forEach((w, i) => {
       const t = words.length > 1 ? i / (words.length - 1) : 1;
-      const weight = Math.round(b ? a + (b - a) * t : a);
       const s = document.createElement('span'); s.className = 'mw' + (gold ? ' g' : '');
-      const r = document.createElement('span'); r.className = 'mw-r'; r.textContent = w; r.style.fontWeight = weight;
-      const v = document.createElement('span'); v.className = 'mw-v'; v.textContent = w; v.style.fontWeight = reduce ? weight : 200;
-      s.append(r, v); frag.append(s, ' ');
-      mfWords.push({ v, weight, gold, k: -1 });
+      s.textContent = w; s.style.fontWeight = Math.round(b ? a + (b - a) * t : a);
+      frag.append(s, ' ');
+      mfWords.push({ v: s, gold, k: -1 });
     });
     group.replaceWith(frag);
   });
@@ -1041,7 +1077,6 @@
       if (Math.abs(k - o.k) < .004) continue;
       o.k = k;
       o.v.style.opacity = (.38 + .62 * k).toFixed(3);
-      if (!reduce) o.v.style.fontWeight = Math.round(200 + (o.weight - 200) * k);
       if (o.gold) o.v.style.color = `rgb(${Math.round(236 - 4 * k)},${Math.round(236 - 40 * k)},${Math.round(236 - 94 * k)})`;
     }
     const q = reduce ? 1 : p;
@@ -1131,12 +1166,15 @@
      Portada
      --------------------------------------------------------------- */
   const hero = $('.hero'), heroPar = $('.hero-par'), heroDim = $('.hero-dim'), heroBottom = $('.hero-bottom'), heroMotto = $('.motto-hero');
-  const heroVideo = $('.hero-video');
-  if (heroVideo) {
-    const src = heroVideo.querySelector('source');
-    const drop = () => heroVideo.remove();
-    if (src) src.addEventListener('error', drop); else drop();
-    heroVideo.addEventListener('error', drop);
+  // Vídeo de portada opcional: solo se carga si <section class="hero"> tiene data-video="ruta/al/video.mp4"
+  if (hero.dataset.video && !reduce && !lite) {
+    const v = document.createElement('video');
+    v.className = 'hero-video'; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+    ['muted', 'playsinline', 'autoplay', 'loop'].forEach(a => v.setAttribute(a, ''));
+    v.setAttribute('aria-hidden', 'true'); v.poster = $('.hero-img').src; v.src = hero.dataset.video;
+    v.addEventListener('error', () => v.remove());
+    heroPar.append(v);
+    const pr = v.play && v.play(); if (pr && pr.catch) pr.catch(() => {});
   }
   let heroH = hero.offsetHeight, hmx = 0, hmy = 0, hmxT = 0, hmyT = 0, heroVisible = true, mouseX = -9999, mouseY = -9999, heroLast = '';
   if (finePointer) hero.addEventListener('pointermove', e => {
@@ -1175,8 +1213,9 @@
         let target = 200;
         if (mouseX > -9999) { const dx = mouseX - o.x, dy = (mouseY - o.y) * 1.4; target += 260 * Math.exp(-(dx * dx + dy * dy) / (2 * 150 * 150)); }
         if (letterWave >= 0 && letterWave < 2.4) { const c = letterWave * 3.2 - i * .45; target = Math.max(target, 200 + 200 * Math.exp(-c * c * 1.5) * (c > -2 ? 1 : 0)); }
-        const w = lerp(o.w, target, 1 - Math.exp(-dt * 9));
-        if (Math.abs(w - o.w) > .4) { o.w = w; o.el.style.fontWeight = Math.round(w); }
+        const diff = target - o.w;
+        if (Math.abs(diff) > .5) { o.w += diff * (1 - Math.exp(-dt * 9)); o.el.style.fontWeight = Math.round(o.w); }
+        else if (o.w !== target) { o.w = target; o.el.style.fontWeight = Math.round(target); }
       }
     }
     heroDim.style.opacity = (hp * .9).toFixed(3);
@@ -1272,13 +1311,20 @@
   }
 
   // Vídeos de YouTube (youtube-nocookie, solo se cargan al pulsar play)
+  const ytOrigin = /^https?:/.test(location.origin) ? '&origin=' + encodeURIComponent(location.origin) : '';
   const makeIframe = (id, title) => {
     const f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + ytOrigin;
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true; f.title = title || 'Vídeo';
     return f;
   };
+  // Se suscribe a los cambios de estado del reproductor (protocolo postMessage de la API de YouTube)
+  const ytListen = (f, id) => f.addEventListener('load', () => {
+    const send = o => { try { f.contentWindow.postMessage(JSON.stringify(o), '*'); } catch (err) {} };
+    send({ event: 'listening', id, channel: 'widget' });
+    send({ event: 'command', func: 'addEventListener', args: ['onStateChange'], id, channel: 'widget' });
+  });
   const feat = $('.feat'), featVideo = $('.feat .video'), disc = $('.vinyl-disc');
   const pauseFeatured = () => {
     const f = $('iframe', featVideo);
@@ -1288,9 +1334,25 @@
   };
   featVideo.addEventListener('click', () => {
     if ($('iframe', featVideo)) return;
-    featVideo.append(makeIframe(featVideo.dataset.id, featVideo.dataset.title));
+    const f = makeIframe(featVideo.dataset.id, featVideo.dataset.title);
+    ytListen(f, 'feat');
+    featVideo.append(f);
     feat.classList.add('playing');
     $('#live').textContent = 'Reproduciendo ' + featVideo.dataset.title;
+  });
+  // El vinilo gira cuando el vídeo suena de verdad y frena si se pausa desde los controles de YouTube
+  addEventListener('message', e => {
+    if (!/^https:\/\/www\.youtube(-nocookie)?\.com$/.test(e.origin)) return;
+    const f = $('iframe', featVideo);
+    if (!f || e.source !== f.contentWindow) return;
+    let d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch (err) { return; } }
+    if (!d || typeof d !== 'object') return;
+    let st = null;
+    if (d.event === 'onStateChange' && typeof d.info === 'number') st = d.info;
+    else if (d.event === 'infoDelivery' && d.info && typeof d.info.playerState === 'number') st = d.info.playerState;
+    if (st === null || st === -1 || st === 5) return; // -1 sin empezar, 5 en cola: se ignoran
+    feat.classList.toggle('playing', st === 1 || st === 3); // 1 sonando, 3 cargando · 2 pausa, 0 fin
   });
   feat.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') feat.classList.add('hover'); });
   feat.addEventListener('pointerleave', () => feat.classList.remove('hover'));
@@ -1316,22 +1378,26 @@
   /* ---------------------------------------------------------------
      Galería: tira horizontal en escritorio + visor con transición FLIP
      --------------------------------------------------------------- */
-  const gal = $('#galeria'), gTrack = $('.gal-track', gal), gBarI = $('.gal-bar .bar i', gal), gN = $('#gal-n');
+  const gal = $('#galeria'), gRail = $('.gal-rail', gal), gTrack = $('.gal-track', gal), gBarI = $('.gal-bar .bar i', gal), gN = $('#gal-n');
   const gItems = $$('.g-item', gal), gBtns = gItems.map(f => $('.g-btn', f)), gImgs = gBtns.map(b => $('img', b));
-  // GAL_K < 1: la tira avanza algo más rápido que el scroll, para que la galería no se haga eterna
-  const GAL_K = .72;
+  $('#gal-total').textContent = gItems.length;
+  $('#gal-total-2').textContent = pad2(gItems.length);
+  // GAL_K < 1: la tira avanza más rápido que el scroll, para que la galería no se haga eterna
+  const GAL_K = .5;
   let galOn = false, galTop = 0, galDist = 0, galGeo = [], galLastTx = null, galIdx = -1;
+  const setGalIdx = i => { if (i !== galIdx) { galIdx = i; gN.textContent = pad2(i + 1); } };
   function layoutGallery() {
     const on = wideMQ.matches && !reduce;
     if (on !== galOn) {
       galOn = on; gal.classList.toggle('h', on);
-      if (!on) { gTrack.style.transform = ''; gal.style.height = ''; gImgs.forEach(i => { i.style.transform = ''; }); }
+      if (!on) { gRail.style.transform = ''; gal.style.height = ''; gImgs.forEach(i => { i.style.transform = ''; }); }
       galLastTx = null;
     }
     if (galOn) {
-      galDist = Math.max(0, gTrack.offsetWidth - vw);
+      galDist = Math.max(0, gRail.offsetWidth - vw);
       gal.style.height = Math.round(galDist * GAL_K + vh) + 'px';
-      galGeo = gItems.map((it, i) => ({ img: gImgs[i], x: it.offsetLeft, w: it.offsetWidth }));
+      const base = gTrack.offsetLeft;
+      galGeo = gItems.map((it, i) => ({ img: gImgs[i], x: base + it.offsetLeft, w: it.offsetWidth }));
       galLastTx = null;
     }
     galTop = docTop(gal);
@@ -1343,7 +1409,7 @@
     const tx = -p * galDist;
     if (tx === galLastTx) return;
     galLastTx = tx;
-    gTrack.style.transform = `translate3d(${tx.toFixed(1)}px,0,0)`;
+    gRail.style.transform = `translate3d(${tx.toFixed(1)}px,0,0)`;
     gBarI.style.transform = `scaleX(${p.toFixed(4)})`;
     let best = 0, bestD = Infinity;
     for (let i = 0; i < galGeo.length; i++) {
@@ -1351,30 +1417,56 @@
       if (Math.abs(rel) < bestD) { bestD = Math.abs(rel); best = i; }
       if (rel > -1.2 && rel < 1.2) g.img.style.transform = `translate3d(${(-rel * 6).toFixed(2)}%,0,0)`;
     }
-    if (best !== galIdx) { galIdx = best; gN.textContent = pad2(best + 1); }
+    setGalIdx(best);
   }
-  // En móvil (sin hover) la foto que pasa por el centro de la pantalla recupera el color
+  // Móvil: la tira se desliza con el dedo; contador y barra siguen el desplazamiento
+  gTrack.addEventListener('scroll', () => {
+    if (galOn) return;
+    const max = gTrack.scrollWidth - gTrack.clientWidth;
+    gBarI.style.transform = `scaleX(${(max > 0 ? gTrack.scrollLeft / max : 0).toFixed(4)})`;
+    const edge = gTrack.scrollLeft + gTrack.clientWidth * .35;
+    let best = 0;
+    gItems.forEach((it, i) => { if (it.offsetLeft <= edge) best = i; });
+    setGalIdx(best);
+  }, { passive: true });
+  // Sin ratón, la foto que pasa por el centro de la tira recupera el color
   if (!finePointer && 'IntersectionObserver' in window) {
-    const litIO = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('lit', e.isIntersecting)), { rootMargin: '-38% 0px -38% 0px' });
+    const litIO = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('lit', e.isIntersecting)), { root: gTrack, rootMargin: '0px -32% 0px -32%' });
     gItems.forEach(it => litIO.observe(it));
   }
+  // Si falta una versión ligera (img/webp/…webp), se usa el JPG original
+  $$('img[srcset]').forEach(im => {
+    const fix = () => { if (im.hasAttribute('srcset')) { im.removeAttribute('srcset'); im.removeAttribute('sizes'); } };
+    im.addEventListener('error', fix);
+    if (im.complete && im.currentSrc && !im.naturalWidth) fix();
+  });
 
   const lb = $('#lb'), lbImg = $('.lb-img', lb), lbCap = $('.lb-cap', lb), lbNum = $('.lb-num', lb), lbFig = $('.lb-fig', lb);
   $('.lb-total', lb).textContent = pad2(gImgs.length);
   let cur = 0, lbBusy = false, swiped = false;
   const ease = 'cubic-bezier(.16,1,.3,1)';
+  const arOf = i => {
+    const [w, h] = getComputedStyle(gItems[i]).getPropertyValue('--ar').split('/').map(parseFloat);
+    return w > 0 && h > 0 ? w / h : (gImgs[i].naturalWidth / gImgs[i].naturalHeight) || .667;
+  };
   function setLb(i) {
     cur = (i + gImgs.length) % gImgs.length;
-    const im = gImgs[cur];
-    lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt;
+    const im = gImgs[cur], full = im.src, quick = im.currentSrc || full;
+    lbImg.style.setProperty('--lb-ar', arOf(cur).toFixed(4));
+    lbImg.src = quick; lbImg.alt = im.alt;
     lbCap.textContent = im.alt; lbNum.textContent = pad2(cur + 1);
+    if (quick !== full) {
+      const hi = new Image();
+      hi.onload = () => { if (gImgs[cur] === im && lbImg.getAttribute('src') === quick) lbImg.src = full; };
+      hi.src = full;
+    }
     [cur + 1, cur - 1].forEach(j => { const n = gImgs[(j + gImgs.length) % gImgs.length]; const p = new Image(); p.src = n.currentSrc || n.src; });
   }
   // FLIP: la foto vuela desde su miniatura hasta el centro (y vuelve al cerrar)
   function flip(thumbBox, reverse) {
     const r0 = thumbBox.getBoundingClientRect(), r1 = lbImg.getBoundingClientRect();
-    if (!r0.width || !r1.width || !lbImg.naturalWidth) return null;
-    const nat = lbImg.naturalWidth / lbImg.naturalHeight;
+    if (!r0.width || !r1.width) return null;
+    const nat = parseFloat(lbImg.style.getPropertyValue('--lb-ar')) || (lbImg.naturalWidth / lbImg.naturalHeight) || .667;
     let iw, ih;
     if (r0.width / r0.height > nat) { iw = r0.width; ih = r0.width / nat; } else { ih = r0.height; iw = r0.height * nat; }
     const s = iw / r1.width;
@@ -1510,7 +1602,7 @@
   /* ---------------------------------------------------------------
      Grano de película
      --------------------------------------------------------------- */
-  if (!reduce) {
+  if (!reduce && !lite) {
     const c = document.createElement('canvas'); c.width = c.height = 160;
     const g = c.getContext('2d'), d = g.createImageData(160, 160);
     for (let i = 0; i < d.data.length; i += 4) { const v = Math.random() * 255 | 0; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
